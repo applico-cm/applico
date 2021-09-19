@@ -1,5 +1,7 @@
 package model
 
+import "time"
+
 type Customer struct {
 	CusteomerID string // unique
 	Name        string
@@ -37,4 +39,25 @@ type Role struct {
 type Feature struct {
 	FeatureID string
 	Roles     []string
+}
+
+type Project struct {
+	ProjectID    string
+	CustomerID   string
+	TeamID       string
+	Name         string
+	Description  string
+	State        string // Active, Archived, Deleted
+	CreationDate time.Time
+	UpdateDate   time.Time
+}
+
+type Template struct {
+	TemplateID   string
+	ProjectID    string
+	FileName     string
+	Type         string
+	Descriptor   string
+	CreationDate time.Time
+	UpdateDate   time.Time
 }
