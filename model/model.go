@@ -33,3 +33,8 @@ type Role struct {
 	RoleID string
 	Name   string
 }
+
+type Feature struct {
+	FeatureID string
+	Roles     []string
+}
