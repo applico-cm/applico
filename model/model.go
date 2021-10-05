@@ -9,11 +9,14 @@ type Customer struct {
 }
 
 type User struct {
-	CustomerID string
-	UserID     string // unique
-	Name       string
-	RoleID     string
-	Teams      []struct {
+	CustomerID   string    `db:"customer_id"`
+	UserID       string    `db:"id"` // unique
+	Name         string    `db:"name"`
+	RoleID       string    `db:"role_id"`
+	Email        string    `db:"email"`
+	CreationDate time.Time `db:"create_date"`
+	UpdateDate   time.Time `db:"update_date"`
+	Teams        []struct {
 		TeamID string
 		Name   string
 	}
