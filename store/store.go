@@ -10,8 +10,7 @@ import (
 
 var DbManager *dbr.Session
 
-func NewDbConn() *dbr.Session {
-	conf := config.ConfigManager.GetDatabaseConfiguration()
+func NewDbConn(conf *config.DatabaseConfiguration) *dbr.Session {
 	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		conf.Host, conf.Port, conf.User, conf.Password, conf.Database)
 	conn, err := dbr.Open("postgres", psqlInfo, nil)
@@ -31,6 +30,6 @@ func NewDbConn() *dbr.Session {
 	return conn.NewSession(nil)
 }
 
-func InitDatabaseConn() {
-	DbManager = NewDbConn()
+func InitDatabaseConn(conf *config.DatabaseConfiguration) {
+	DbManager = NewDbConn(conf)
 }
