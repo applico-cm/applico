@@ -1,8 +1,8 @@
 package store
 
 import (
+	"github.com/applico-cm/applico/model"
 	dbr "github.com/gocraft/dbr/v2"
-	"github.com/maxzerbini/applico/model"
 )
 
 const (

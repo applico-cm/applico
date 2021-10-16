@@ -1,6 +1,6 @@
 package core
 
-import "github.com/maxzerbini/applico/model"
+import "github.com/applico-cm/applico/model"
 
 type Any interface{}
 

@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/applico-cm/applico/config"
 	dbr "github.com/gocraft/dbr/v2"
-	"github.com/maxzerbini/applico/config"
+	_ "github.com/lib/pq"
 )
 
 var DbManager *dbr.Session
