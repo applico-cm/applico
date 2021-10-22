@@ -5,7 +5,7 @@ import (
 
 	"github.com/applico-cm/applico/config"
 	"github.com/applico-cm/applico/store"
-	_ "github.com/lib/pq"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -16,5 +16,13 @@ func main() {
 	}
 	store.InitDatabaseConn(conf.DatabaseConfiguration())
 	defer store.DbManager.Close()
+
+	server := NewServer()
+
+	router := gin.Default()
+
+	router.GET("/users/:customerid", server.ListUsers)
+
+	router.Run()
 
 }

@@ -1,6 +1,8 @@
 package store
 
 import (
+	"context"
+
 	"github.com/applico-cm/applico/model"
 	dbr "github.com/gocraft/dbr/v2"
 )
@@ -8,6 +10,11 @@ import (
 const (
 	userTable = "user_account"
 )
+
+type Users interface {
+	FindUserByID(ctx context.Context, userID string) (user *model.User, err error)
+	FindUsersByCustomerID(ctx context.Context, customerID string) (users []*model.User, err error)
+}
 
 type UserStore struct {
 	conn *dbr.Session
