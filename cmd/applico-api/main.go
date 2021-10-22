@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
+	"github.com/applico-cm/applico/config"
+	"github.com/applico-cm/applico/store"
 	_ "github.com/lib/pq"
-	"github.com/maxzerbini/applico/config"
-	"github.com/maxzerbini/applico/store"
 )
 
 func main() {

@@ -1,6 +1,6 @@
 package cache
 
-import "github.com/maxzerbini/applico/model"
+import "github.com/applico-cm/applico/model"
 
 type Cache interface {
 	GetUser(userID string) (*model.User, error)

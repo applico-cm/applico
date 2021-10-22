@@ -1,4 +1,4 @@
-module github.com/maxzerbini/applico
+module github.com/applico-cm/applico
 
 go 1.17
 
