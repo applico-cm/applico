@@ -1,0 +1,23 @@
+version: '3'
+services:
+  database:
+    image: postgres:13
+    env_file:
+      - database.env # configure postgres
+    ports:
+        - "5432:5432"
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+  api:
+    image: applico-api:dev
+    environment:
+      - PG_HOST=database
+      - PG_PASSWORD=postgres
+    container_name: api
+    ports:
+        - "8080:8080"
+    depends_on:
+        - database
+
+volumes:
+  database-data: # named volumes can be managed easier using docker-compose

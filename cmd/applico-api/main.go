@@ -23,6 +23,6 @@ func main() {
 
 	router.GET("/users/:customerid", server.ListUsers)
 
-	router.Run()
+	router.Run("0.0.0.0:8080")
 
 }
