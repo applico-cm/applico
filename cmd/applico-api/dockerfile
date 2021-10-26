@@ -1,0 +1,23 @@
+FROM golang:1.17 AS build
+
+WORKDIR /app
+COPY go.* ./
+RUN go mod download
+COPY . ./
+
+# Run all tests
+RUN go test -v ./...
+
+WORKDIR /app/cmd/applico-api
+ENV CGO_ENABLED=0
+RUN GOOS=linux GOARCH=amd64 go build -o /bin/applico-api .
+
+
+FROM alpine:3.13 AS runtime
+USER 0
+RUN apk add ca-certificates
+
+WORKDIR /
+COPY --from=build /bin/applico-api /app/applico-api
+
+ENTRYPOINT ["/app/applico-api"]
